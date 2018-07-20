@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>Examples</RootNamespace>
+    <AssemblyName>Examples</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Samples\Bookmark\Resources\DocumentWithBookmarks.docx" />
+    <None Include="Samples\Document\Resources\First.docx" />
+    <None Include="Samples\Document\Resources\ReplaceText.docx" />
+    <None Include="Samples\Document\Resources\Second.docx" />
+    <None Include="Samples\Document\Resources\Template.docx" />
+    <None Include="Samples\Image\Resources\Input.docx" />
+    <None Include="Samples\Miscellaneous\Resources\TemplateInvoice.docx" />
+    <None Include="Samples\Parallel\Resources\Doc1.docx" />
+    <None Include="Samples\Parallel\Resources\Doc2.docx" />
+    <None Include="Samples\Parallel\Resources\Doc3.docx" />
+    <None Include="Samples\Table\Resources\DocumentWithTemplateTable.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Samples\Image\Resources\balloon.jpg" />
+    <Content Include="Samples\Miscellaneous\Resources\cupcake.png" />
+    <Content Include="Samples\Miscellaneous\Resources\Phone.png" />
+    <Content Include="Samples\Parallel\Resources\potato.jpg" />
+    <Content Include="Samples\Table\Resources\logo_xceed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DocXStandard\DocXStandard.csproj" />
+  </ItemGroup>
+</Project>
