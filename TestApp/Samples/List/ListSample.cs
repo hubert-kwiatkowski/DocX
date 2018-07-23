@@ -54,7 +54,7 @@ namespace DocXStandard.Examples
         document.InsertParagraph( "Adding lists into a document" ).FontSize( 15d ).SpacingAfter( 50d ).Alignment = Alignment.center;
 
         // Add a numbered list where the first ListItem is starting with number 1.
-        var numberedList = document.AddList( "Berries", 0, ListItemType.Numbered, 1 );
+        var numberedList = document.AddList( "Berries", 0, ListItemType.Numbered, 1);
         // Add Sub-items(level 1) to the preceding ListItem.
         document.AddListItem( numberedList, "Strawberries", 1 );
         document.AddListItem( numberedList, "Blueberries", 1 );
@@ -89,14 +89,58 @@ namespace DocXStandard.Examples
         // Add Sub-items(level 1) to the preceding ListItem.
         document.AddListItem( bulletedList, "Paris", 1 );
 
+        // Add a letter starting list with its first item.
+        var letterList = document.AddList( "North America", 0, ListItemType.Letter);
+        // Add Sub-items(level 1) to the preceding ListItem.
+        document.AddListItem( letterList, "Canada", 1 );
+        document.AddListItem( letterList, "USA", 1 );
+        document.AddListItem( letterList, "Mexic", 1 );
+        // Add an item (level 0)
+        document.AddListItem( letterList, "South America" );
+        // Add Sub-items(level 1) to the preceding ListItem.
+        document.AddListItem( letterList, "Brazil", 1 );
+        document.AddListItem( letterList, "Argentina", 1 );
+
+        // Add a numbered list (bracket) with its first item.
+        var numberedList2 = document.AddList( "North America", 0, ListItemType.NumberedBracket);
+        // Add Sub-items(level 1) to the preceding ListItem.
+        document.AddListItem( numberedList2, "Canada", 1 );
+        document.AddListItem( numberedList2, "USA", 1 );
+        document.AddListItem( numberedList2, "Mexic", 1 );
+        // Add an item (level 0)
+        document.AddListItem( numberedList2, "South America" );
+        // Add Sub-items(level 1) to the preceding ListItem.
+        document.AddListItem( numberedList2, "Brazil", 1 );
+        document.AddListItem( numberedList2, "Argentina", 1 );
+                
+        // Add a numbered list
+        var numberedList3 = document.AddList(null, 0, ListItemType.Numbered, 1);
+        //define number font size
+        numberedList3.NumberFontSize = 8d;
+        // Add an item (level 0)
+        document.AddListItem( numberedList3,  "Berries" );
+        // Add Sub-items(level 1) to the preceding ListItem.
+        document.AddListItem( numberedList3, "Strawberries", 1 );
+        document.AddListItem( numberedList3, "Blueberries", 1 );
+        document.AddListItem( numberedList3, "Raspberries", 1 );
+
         // Insert the lists into the document.
         document.InsertParagraph( "This is a Numbered List:\n" );
         document.InsertList( numberedList );
         document.InsertParagraph().SpacingAfter( 40d );
         document.InsertParagraph( "This is a Bulleted List:\n" );
         document.InsertList( bulletedList, new Font("Cooper Black"), 15 );
-
+        document.InsertParagraph().SpacingAfter( 40d );
+        document.InsertParagraph( "This is a letter starting List:\n" );
+        document.InsertList( letterList );        
+        document.InsertParagraph().SpacingAfter( 40d );
+        document.InsertParagraph( "This is a numbered (bracket) List:\n" );
+        document.InsertList( numberedList2 );
+        document.InsertParagraph().SpacingAfter(40d);
+        document.InsertParagraph("This is a numbered List with number font size 8:\n");
+        document.InsertList( numberedList3 );
         document.Save();
+
         Console.WriteLine( "\tCreated: AddList.docx\n" );
       }
     }

@@ -21,7 +21,9 @@ namespace DocXStandard
   public enum ListItemType
   {
     Bulleted,
-    Numbered
+    Numbered,
+    NumberedBracket,
+    Letter
   }
 
   public enum SectionBreakType

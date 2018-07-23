@@ -544,8 +544,8 @@ namespace DocXStandard{
 
         if( _size.HasValue )
         {
-          _rPr.Add( new XElement( XName.Get( "sz", DocX.w.NamespaceName ), new XAttribute( XName.Get( "val", DocX.w.NamespaceName ), ( _size * 2 ).ToString() ) ) );
-          _rPr.Add( new XElement( XName.Get( "szCs", DocX.w.NamespaceName ), new XAttribute( XName.Get( "val", DocX.w.NamespaceName ), ( _size * 2 ).ToString() ) ) );
+          _rPr.Add( new XElement( XName.Get( "sz", DocX.w.NamespaceName ), new XAttribute( XName.Get( "val", DocX.w.NamespaceName ), ( _size * 2 ).Value.ToString(CultureInfo.CreateSpecificCulture("en-US")) ) ) );
+          _rPr.Add( new XElement( XName.Get( "szCs", DocX.w.NamespaceName ), new XAttribute( XName.Get( "val", DocX.w.NamespaceName ), ( _size * 2 ).Value.ToString(CultureInfo.CreateSpecificCulture("en-US")) ) ) );
         }
 
         if( _fontColor.HasValue )

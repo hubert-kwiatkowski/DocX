@@ -52,6 +52,11 @@ namespace DocXStandard
       get; private set;
     }
 
+    /// <summary>
+    /// The List number font size
+    /// </summary>
+    public double NumberFontSize { get; set; } = 11d;
+
     #endregion
 
     #region Constructors
@@ -154,6 +159,12 @@ namespace DocXStandard
           break;
         case ListItemType.Numbered:
           listTemplate = HelperFunctions.DecompressXMLResource( "DocXStandard.Resources.numbering.default_decimal_abstract.xml.gz" );
+          break;
+        case ListItemType.NumberedBracket:
+          listTemplate = HelperFunctions.DecompressXMLResource( "DocXStandard.Resources.numbering.default_bracket_abstract.xml.gz" );
+          break;
+        case ListItemType.Letter:
+          listTemplate = HelperFunctions.DecompressXMLResource( "DocXStandard.Resources.numbering.default_letter_abstract.xml.gz" );
           break;
         default:
           throw new InvalidOperationException( string.Format( "Unable to deal with ListItemType: {0}.", listType.ToString() ) );

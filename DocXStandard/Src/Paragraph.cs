@@ -362,7 +362,7 @@ namespace DocXStandard
           XAttribute hanging = ind.Attribute( XName.Get( "hanging", DocX.w.NamespaceName ) );
           hanging?.Remove();
 
-          string indentation = ( ( indentationFirstLine / 0.1 ) * 57 ).ToString();
+          string indentation = ( ( indentationFirstLine / 0.1 ) * 57 ).ToString(CultureInfo.CreateSpecificCulture("en-US"));
           XAttribute firstLine = ind.Attribute( XName.Get( "firstLine", DocX.w.NamespaceName ) );
           if( firstLine != null )
             firstLine.Value = indentation;
@@ -423,7 +423,7 @@ namespace DocXStandard
           }
 
           var indentationValue = ( ( indentationHanging / 0.1 ) * 57 );
-          var indentation = indentationValue.ToString();
+          var indentation = indentationValue.ToString(CultureInfo.CreateSpecificCulture("en-US"));
           var hanging = ind.Attribute( XName.Get( "hanging", DocX.w.NamespaceName ) );
           if( hanging != null )
           {
@@ -481,7 +481,7 @@ namespace DocXStandard
           GetOrCreate_pPr();
           var ind = GetOrCreate_pPr_ind();
 
-          var indentation = ( ( indentationBefore / 0.1 ) * 57 ).ToString();
+          var indentation = ( ( indentationBefore / 0.1 ) * 57 ).ToString(CultureInfo.CreateSpecificCulture("en-US"));
 
           var left = ind.Attribute( XName.Get( "left", DocX.w.NamespaceName ) );
           if( left != null )
@@ -543,7 +543,7 @@ namespace DocXStandard
           GetOrCreate_pPr();
           var ind = GetOrCreate_pPr_ind();
 
-          var indentation = ( ( indentationAfter / 0.1 ) * 57 ).ToString();
+          var indentation = ( ( indentationAfter / 0.1 ) * 57 ).ToString(CultureInfo.CreateSpecificCulture("en-US"));
 
           var right = ind.Attribute( XName.Get( "right", DocX.w.NamespaceName ) );
           if( right != null )
@@ -2428,7 +2428,7 @@ namespace DocXStandard
 
       // Position
       var posValue = position * 20.0f;
-      newTab.SetAttributeValue( XName.Get( "pos", DocX.w.NamespaceName ), posValue.ToString() );
+      newTab.SetAttributeValue( XName.Get( "pos", DocX.w.NamespaceName ), posValue.ToString(CultureInfo.CreateSpecificCulture("en-US")) );
 
       //Leader
       var leaderString = string.Empty;

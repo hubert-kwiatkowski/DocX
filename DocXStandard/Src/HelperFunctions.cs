@@ -652,9 +652,15 @@ namespace DocXStandard
             (
                 XName.Get("p", DocX.w.NamespaceName),
                 new XElement(XName.Get("pPr", DocX.w.NamespaceName),
-                new XElement(XName.Get("numPr", DocX.w.NamespaceName),
-                new XElement(XName.Get("ilvl", DocX.w.NamespaceName), new XAttribute(DocX.w + "val", level)),
-                new XElement(XName.Get("numId", DocX.w.NamespaceName), new XAttribute(DocX.w + "val", list.NumId)))),
+                    new XElement(XName.Get("rPr", DocX.w.NamespaceName),
+                        new XElement(XName.Get("sz", DocX.w.NamespaceName), new XAttribute(XName.Get("val", DocX.w.NamespaceName), (list.NumberFontSize * 2).ToString(CultureInfo.CreateSpecificCulture("en-US")))),
+                        new XElement(XName.Get("szCs", DocX.w.NamespaceName), new XAttribute(XName.Get("val", DocX.w.NamespaceName), (list.NumberFontSize * 2).ToString(CultureInfo.CreateSpecificCulture("en-US"))))
+                    ),
+                    new XElement(XName.Get("numPr", DocX.w.NamespaceName),
+                        new XElement(XName.Get("ilvl", DocX.w.NamespaceName), new XAttribute(DocX.w + "val", level)),
+                        new XElement(XName.Get("numId", DocX.w.NamespaceName), new XAttribute(DocX.w + "val", list.NumId))
+                    )
+                ),
                 new XElement(XName.Get("r", DocX.w.NamespaceName), new XElement(XName.Get("t", DocX.w.NamespaceName), listText))
             );
 
