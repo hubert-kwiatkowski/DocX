@@ -697,8 +697,12 @@ namespace DocXStandard
 
   public enum TextDirection
   {
-    btLr,
-    right
+    btLr, //(Bottom to Top, Left to Right)
+    right,
+    lrTb, //(Left to Right, Top to Bottom)
+    lrTbV, //(Left to Right, Top to Bottom Rotated)
+    tbRl, //(Top to Bottom, Right to Left)
+    tbRlV // (Top to Bottom, Right to Left Rotated)
   }
 
   [Flags]

@@ -1932,6 +1932,18 @@ namespace DocXStandard
     }
 
     /// <summary>
+    /// Set the table borders
+    /// </summary>
+    /// <param name="borders">Table cell borders wrapper</param>
+    public void SetBorders(TableBorder borders)
+    {
+        foreach (TableBorderType key in borders.Collection.Keys)
+        {
+            SetBorder(key, borders.Collection[key]);
+        }
+    }
+
+    /// <summary>
     /// Set a table border
     /// </summary>
     /// <example>
@@ -2221,6 +2233,18 @@ namespace DocXStandard
         return Double.NaN;
 
       return columnWidths[ columnIndex ];
+    }
+
+    /// <summary>
+    /// Set width of specified columns
+    /// </summary>
+    /// <param name="widths"></param>
+    public void SetColumnsWidth(params double[] widths)
+    {
+        for(int i = 0; i< widths.Length; i++)
+        {
+            SetColumnWidth(i, widths[i]);
+        }
     }
 
     public void SetColumnWidth( int columnIndex, double width )
@@ -2691,6 +2715,30 @@ namespace DocXStandard
       Xml.Remove();
       if( !table.Elements( XName.Get( "tr", DocX.w.NamespaceName ) ).Any() )
         table.Remove();
+    }
+
+    /// <summary>
+    /// Set width of specified cells
+    /// </summary>
+    /// <param name="widths"></param>
+    public void SetCellsWidth(params double[] widths)
+    {
+        for(int i = 0; i< widths.Length; i++)
+        {
+            Cells[i].Width = widths[i];
+        }
+    }
+
+    /// <summary>
+    /// Set the same border style to every cell in row
+    /// </summary>
+    /// <param name="borders">Table cell borders wrapper</param>
+    public void SetCellsBorders(TableCellBorder borders)
+    {
+        foreach(Cell cell in Cells)
+        {
+            cell.SetBorders(borders);
+        }
     }
 
     /// <summary>
@@ -3632,6 +3680,18 @@ namespace DocXStandard
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    /// Set the table cell borders
+    /// </summary>
+    /// <param name="borders">Table cell borders wrapper</param>
+    public void SetBorders(TableCellBorder borders )
+    {
+        foreach (TableCellBorderType key in borders.Collection.Keys)
+        {
+            SetBorder(key, borders.Collection[key]);
+        }
+    }
 
     // <summary>
     // Set the table cell border

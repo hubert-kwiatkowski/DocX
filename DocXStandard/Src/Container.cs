@@ -742,6 +742,42 @@ namespace DocXStandard
       return newTable;
     }
 
+    /// <summary>
+    /// Insert new section into document with specified page orientation
+    /// </summary>
+    /// <param name="orientation">Page orientation</param>
+    public virtual void InsertSection(Orientation orientation)
+    {
+        var newSection = new XElement(XName.Get("p", DocX.w.NamespaceName), 
+                            new XElement(XName.Get("pPr", DocX.w.NamespaceName), 
+                                new XElement(XName.Get("sectPr", DocX.w.NamespaceName),
+                                    new XElement(XName.Get("pgSz", DocX.w.NamespaceName),
+                                        new XAttribute(XName.Get("w", DocX.w.NamespaceName), orientation == Orientation.Portrait ? "11906" : "16838"),
+                                        new XAttribute(XName.Get("h", DocX.w.NamespaceName), orientation == Orientation.Portrait ? "16838" : "11906"),
+                                        new XAttribute(XName.Get("orient", DocX.w.NamespaceName), orientation.ToString().ToLower())
+                                    ),
+                                    new XElement(XName.Get("pgMar", DocX.w.NamespaceName),
+                                        new XAttribute(XName.Get("top", DocX.w.NamespaceName), "1440"),
+                                        new XAttribute(XName.Get("right", DocX.w.NamespaceName), "1440"),
+                                        new XAttribute(XName.Get("bottom", DocX.w.NamespaceName), "1440"),
+                                        new XAttribute(XName.Get("left", DocX.w.NamespaceName), "1440"),
+                                        new XAttribute(XName.Get("header", DocX.w.NamespaceName), "708"),
+                                        new XAttribute(XName.Get("footer", DocX.w.NamespaceName), "708"),
+                                        new XAttribute(XName.Get("gutter", DocX.w.NamespaceName), "0")
+                                    ),
+                                    new XElement(XName.Get("cols", DocX.w.NamespaceName),
+                                        new XAttribute(XName.Get("space", DocX.w.NamespaceName), "708")
+                                    ),
+                                    new XElement(XName.Get("docGrid", DocX.w.NamespaceName),
+                                        new XAttribute(XName.Get("linePitch", DocX.w.NamespaceName), "300")
+                                    )
+                                )
+                            )
+                         );
+
+        this.Xml.Add( newSection );
+    }
+
     public virtual void InsertSection()
     {
       this.InsertSection( false );
